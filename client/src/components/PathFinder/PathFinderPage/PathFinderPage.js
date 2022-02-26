@@ -27,7 +27,7 @@ const PahtFinderPage = () => {
 
     const newMaze = async () => {
 
-        const response = await fetch('http://localhost:4000/getMaze/', {
+        const response = await fetch('/getMaze', {
             method: 'POST',
             headers: {
             "access-control-allow-origin" : "*",

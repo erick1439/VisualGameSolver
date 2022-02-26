@@ -216,7 +216,7 @@ const WordSearchPage = () => {
     
     const newWordSearchTable = async () => {
 
-        const response = await fetch('http://localhost:4000/getWordSeachBoard/', {
+        const response = await fetch('/getWordSeachBoard', {
             method: 'GET',
             headers: {
             "access-control-allow-origin" : "*",

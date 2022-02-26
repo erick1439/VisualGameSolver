@@ -21,7 +21,7 @@ const SudokuPage = () => {
 
         let grid = [...state];
 
-        const response = await fetch('http://localhost:4000/getSudokuTable/', {
+        const response = await fetch('/getSudokuTable', {
             method: 'GET',
             headers: {
             "access-control-allow-origin" : "*",
