@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const GetSudokuTableController = async (req, res) => {
+const GetSudokuTableController = (req, res) => {
 
     let randValue = Math.random() * (100 - 11) + 11;
 
