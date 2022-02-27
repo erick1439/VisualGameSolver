@@ -5,12 +5,12 @@ import SortingList from '../SortingList/SortingList.js';
 const SortingPage = () => {
 
     const solvingHistory = [];
-    const [array, setArray] = useState([0,9,8,7,6,4,3,2,1]);
+    const [array, setArray] = useState([]);
 
 
     const newList = () => {
 
-        const temp = new Array(15);
+        const temp = new Array(43);
 
         for (let i = 0; i < temp.length; i++)
             temp[i] = Math.floor(Math.random() * 50) + 1;
@@ -26,7 +26,7 @@ const SortingPage = () => {
 
         for (const frame of solvingHistory) {
             setArray(frame);
-            await new Promise((resolve) => setTimeout(resolve, 300));  
+            await new Promise((resolve) => setTimeout(resolve, 100));  
         }
     }
 
@@ -51,7 +51,7 @@ const SortingPage = () => {
     return(
         <div>
             <Navbar newList={newList} sortList={sortList}/>
-            <div style={{ margin: "40px 450px 50px 450px", display: "flex" }}>
+            <div style={{ margin: "500px 0%"}}>
                 <SortingList data={array}/>
             </div>
         </div>
