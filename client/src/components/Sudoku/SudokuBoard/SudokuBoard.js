@@ -25,7 +25,6 @@ const SudokuBoard = ({data}) => {
             <SudokuBox values={data[7]}/>
             <SudokuBox values={data[8]}/>
         </div>
-
     );
 }
 

@@ -34,6 +34,19 @@ const Home = () => {
                         </Link>
                     </Card.Body>
                 </Card>
+                <Card className='card' style={{ width: '18rem' }}>
+                    <Card.Img variant="top" src="maze.png" height={200} width={200} />
+                    <Card.Body>
+                        <Card.Title>Visual Sorting</Card.Title>
+                        <Card.Text>
+                            This is a maze solver that uses DFS to find a soluiton to the puzzle. The starting posintion will be 
+                            represent with '@', a wall will be '#', and 'e' represents an exit.
+                        </Card.Text>
+                        <Link to='/sortList'>
+                            <Button variant="primary">Go somewhere</Button>
+                        </Link>
+                    </Card.Body>
+                </Card>
             </div>
         </div>
     );
