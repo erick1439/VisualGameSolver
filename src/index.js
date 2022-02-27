@@ -10,11 +10,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-
-app.get('/', (req, res) => {
-    res.send('This is ok');
-});
-
 GetSudokuBoard(app);
 GetWordSearchBoard(app);
 GetMaze(app);
