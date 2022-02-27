@@ -17,7 +17,7 @@ const Home = () => {
                             the possibilities until it completes solving the table.
                         </Card.Text>
                         <Link to='/sudoku'>
-                            <Button variant="primary">Go somewhere</Button>
+                            <Button variant="primary">Click Me</Button>
                         </Link>
                     </Card.Body>
                 </Card>
@@ -30,7 +30,7 @@ const Home = () => {
                             represent with '@', a wall will be '#', and 'e' represents an exit.
                         </Card.Text>
                         <Link to='/maze'>
-                            <Button variant="primary">Go somewhere</Button>
+                            <Button variant="primary">Click Me</Button>
                         </Link>
                     </Card.Body>
                 </Card>
@@ -39,10 +39,11 @@ const Home = () => {
                     <Card.Body>
                         <Card.Title>Visual Sorting</Card.Title>
                         <Card.Text>
-                            This element allows the user to see how bubble sort works.
+                            This element allows the user to see how sorting sort works. The element will auto generate a random list and it will sort the 
+                            list using the good old "bubble-sort" algorigthm.
                         </Card.Text>
                         <Link to='/sortList'>
-                            <Button variant="primary">Go somewhere</Button>
+                            <Button variant="primary">Click Me</Button>
                         </Link>
                     </Card.Body>
                 </Card>
