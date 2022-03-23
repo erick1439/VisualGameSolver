@@ -3,9 +3,9 @@ import * as fs from 'fs';
 const GetMazeController = (req, res) => {
 
     let n = 15;
-    const mazes = ['maze1.txt', 'maze2.txt', 'maze3.txt', 'maze4.txt', 'maze5.txt'];
+    const mazes = ['maze1.txt', 'maze2.txt', 'maze3.txt', 'maze4.txt', 'maze5.txt','maze6.txt', 'maze7.txt', 'maze8.txt'];
 
-    fs.readFile('./src/Mazes/' + mazes[req.body.count % 5], 'utf8', (err, data) => {
+    fs.readFile('./src/Mazes/' + mazes[req.body.count % 8], 'utf8', (err, data) => {
 
         if (err) {
             res.send("Error reading the maze");
