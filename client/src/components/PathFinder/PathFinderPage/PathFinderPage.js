@@ -27,25 +27,18 @@ const PahtFinderPage = () => {
 
     const newMaze = async () => {
 
-        const response = await fetch('/getMaze', {
-            method: 'POST',
-            headers: {
-            "access-control-allow-origin" : "*",
-            "Content-type": "application/json; charset=UTF-8"
-            },
-            body: JSON.stringify({count: count})
-        });
-    
+        const response = await fetch('http://localhost:5001/getMaze');
+
         setCount(prevState => prevState + 1);
         const data = await response.json();
+
+  
         setState(data);
     }
 
     useEffect(async () => newMaze(), []);
 
     const solveMaze = async () => {
-
-        console.log('this is it');
 
         let temp = [...state];
         let startX, startY;

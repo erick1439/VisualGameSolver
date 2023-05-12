@@ -1,48 +1,42 @@
-'use strict';
+import express from 'express';
+import MazeBuilder from './maze/MazeBuilder.js';
+import SudokuGenerator from './sudoku/SudokuGenerator.js';
+import { getList } from './sorting/ListBuilder.js'
 
-var _express = require('express');
-
-var _express2 = _interopRequireDefault(_express);
-
-var _cors = require('cors');
-
-var _cors2 = _interopRequireDefault(_cors);
-
-var _GetSudokuTable = require('./Routes/GetSudokuTable.js');
-
-var _GetSudokuTable2 = _interopRequireDefault(_GetSudokuTable);
-
-var _GetMaze = require('./Routes/GetMaze.js');
-
-var _GetMaze2 = _interopRequireDefault(_GetMaze);
-
-var _GetWordSearchBoard = require('./Routes/GetWordSearchBoard.js');
-
-var _GetWordSearchBoard2 = _interopRequireDefault(_GetWordSearchBoard);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var PORT = process.env.PORT || 4000;
-var app = (0, _express2.default)();
-
-app.use((0, _cors2.default)());
-app.use(_express2.default.json());
-
-app.get('/', function (req, res) {
-  res.send('This is ok');
+const app = express();
+const port = 5001;
+app.use(express.json());
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader("Access-Control-Allow-Credentials", "true");
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
+    res.setHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers")
+    next();
 });
 
-(0, _GetSudokuTable2.default)(app);
-(0, _GetWordSearchBoard2.default)(app);
-(0, _GetMaze2.default)(app);
+app.get('/', (req, res) => {
+  res.send('Hello, World!');
+});
 
-if (process.env.NODE_ENV === 'production') {
+app.get('/getMaze', (req, res) => {
+    let maze = new MazeBuilder(7, 8);
+    let grid = maze.getArrayGrid()
 
-  app.use(_express2.default.static('client/build'));
+    res.send(grid);
+})
 
-  app.get('*', function (req, res) {
-    res.sendFile(path.resolve(__dirname, '../', 'client', 'build', 'index.html'));
-  });
-}
+app.get('/getSudoku', (req, res) => {
 
-app.listen(PORT);
+    const generator = new SudokuGenerator();
+    res.json(generator.board);
+})
+
+app.get('/getList', (req, res) => {
+
+    var randomList = getList(25, 1, 100);
+    res.json({"list" : randomList});
+})
+
+app.listen(port, () => {
+  console.log(`Server running on http://localhost:${port}`);
+});

@@ -21,29 +21,29 @@ const SudokuPage = () => {
 
         let grid = [...state];
 
-        const response = await fetch('/getSudokuTable', {
-            method: 'GET',
-            headers: {
-            "access-control-allow-origin" : "*",
-            "Content-type": "application/json; charset=UTF-8"
-            }
-        });
-
+        const response = await fetch('http://localhost:5001/getSudoku');
         const data = await response.json();
 
-        let k = 0;
+        for (let i = 0; i < 9; i++) {
+            for (let j = 0; j < 9; j++) {
+                if (data[i][j] === 0)
+                    grid[i][j] = '.';
 
-        for (let i = 0; i < 9; i++)
-            for (let j = 0; j < 9; j++)
-              grid[i][j] = data.puzzle.charAt(k++);
-
+                else
+                    grid[i][j] = data[i][j].toString();
+                    
+            }
+        }
+              
         setState(grid);
     }
 
-    const solveSudoku = async () => {
-        
+    const solveSudoku = async () => {        
         let temp = [...state];
+
         solveSudokuHelper(temp);
+
+        console.log(solvingHistory);
 
         for (const grid of solvingHistory) {
             setState(grid);
@@ -57,7 +57,7 @@ const SudokuPage = () => {
             
             for (let j = 0; j < temp.length; j++) {
 
-                if (temp[i][j] ==='.') {
+                if (temp[i][j] === '.') {
 
                     for (let c = '1'; c <= '9'; c++) {
 
