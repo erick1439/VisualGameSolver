@@ -22,7 +22,7 @@ const SudokuPage = () => {
 
         let grid = [...state];
 
-        const response = await fetch('http://localhost:5001/getSudoku');
+        const response = await fetch('https://jf9yh3ioxg.execute-api.us-east-1.amazonaws.com/prod/getSudoku');
         const data = await response.json();
 
         for (let i = 0; i < 9; i++) {
@@ -51,7 +51,7 @@ const SudokuPage = () => {
             setState(grid);
 
             await new Promise((resolve) => setTimeout(resolve, 200));
-            
+
             box.style.color = 'black';
             index++;
         }

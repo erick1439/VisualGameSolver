@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const Home = () => {
     return(
         <div>
-            <h1>Visual Game Solver</h1>
+            <h1 id="title">Visual Game Solver</h1>
             <div className='homeContainer'>
                 <Card className='card' style={{ width: '18rem' }}>
                     <Card.Img variant="top" src="sudoku.png" height={200} width={200} />

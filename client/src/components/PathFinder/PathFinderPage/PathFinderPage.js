@@ -27,7 +27,7 @@ const PahtFinderPage = () => {
 
     const newMaze = async () => {
 
-        const response = await fetch('http://localhost:5001/getMaze');
+        const response = await fetch('https://jf9yh3ioxg.execute-api.us-east-1.amazonaws.com/prod/getMaze');
 
         setCount(prevState => prevState + 1);
         const data = await response.json();
