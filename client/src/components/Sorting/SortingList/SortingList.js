@@ -5,7 +5,8 @@ const SortingList = ({data}) => {
         <div className='listContainer'>
             {
                 data.map((val, index) => {
-                    return(<div key={index} className='element'  style={{paddingTop: `${val * 8}px`}}>{val}</div>);
+                    let numberContainer = "numberContainer" + index;
+                    return(<div id={numberContainer} key={index} className='element'  style={{paddingTop: `${val * 8}px`}}>{val}</div>);
 
                 })
             }
