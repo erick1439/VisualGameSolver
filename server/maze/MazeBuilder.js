@@ -293,11 +293,11 @@ export default class MazeBuilder {
               
             else if (this.maze[i][j][0] === 'door' && door) {
               door = false;
-              row.push('e');
+              row.push('💰');
             } 
     
             else  
-            row.push('@');
+            row.push('🐸');
     
           }
     

@@ -57,3 +57,16 @@
   .board_frame-right{
     border-right:4px solid black;
   }
+
+  .wall {
+    background-color: #454545;
+    background-image: linear-gradient(45deg, rgba(0,0,0,0.2) 45%, transparent 55%), linear-gradient(to bottom, rgba(0,0,0,0.2) 45%, transparent 55%);
+    background-size: 0.5em 0.5em;
+  }
+
+  .water {
+    background-color: #5DADE2; /* Light blue color */
+    border: 1px solid #2980B9; /* Dark blue border */
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2); /* Shadow effect */
+    border-radius: 4px; /* Rounded corners */
+  }

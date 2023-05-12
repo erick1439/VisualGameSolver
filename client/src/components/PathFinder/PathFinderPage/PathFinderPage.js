@@ -52,12 +52,12 @@ const PahtFinderPage = () => {
         // Finding the starting point of the maze and populatin the visited array
         for (let i = 0; i < temp.length; i++) {
             for (let j = 0; j < temp[0].length; j++) {
-                if (temp[i][j] === '@') {
+                if (temp[i][j] === '🐸') {
                     startX = i;
                     startY = j;
                 }
 
-                if (temp[i][j] === '@' || temp[i][j] ==='#')
+                if (temp[i][j] === '🐸' || temp[i][j] ==='#')
                     visited[i][j] = true;
 
                 else 
@@ -77,12 +77,12 @@ const PahtFinderPage = () => {
     const solveMazeHelper = (temp, heigth, width, x, y, visited) => {
 
         let newX, newY;
-        let breadcrumb = '.';
+        let breadcrumb = '🪷';
         let moves = [[0,-1],[0,1],[-1,0],[1,0]];
 
         solvingHistory.push(temp.map((arr) => arr.slice()));
 
-        if (temp[x][y] === 'e') {
+        if (temp[x][y] === '💰') {
             return true;
         }
 
@@ -98,11 +98,11 @@ const PahtFinderPage = () => {
                 continue;
 
             
-            if (temp[newX][newY] === 'e') {
+            if (temp[newX][newY] === '💰') {
 
 
-                temp[newX][newY] = '@';
-                temp[x][y] = '.';
+                temp[newX][newY] = '🤑';
+                temp[x][y] = '🪷';
                 solvingHistory.push(temp.map((arr) => arr.slice()));
 
 
@@ -112,13 +112,13 @@ const PahtFinderPage = () => {
                 visited[newX][newY] = true;
 
             temp[x][y] = breadcrumb;
-            temp[newX][newY] = '@';
+            temp[newX][newY] = '🐸';
 
             if (solveMazeHelper(temp, heigth, width, newX, newY, visited))
                 return true;
 
             temp[newX][newY] = '';
-            temp[x][y] = '@';
+            temp[x][y] = '🐸';
 
             solvingHistory.push(temp.map((arr) => arr.slice()));
         }
