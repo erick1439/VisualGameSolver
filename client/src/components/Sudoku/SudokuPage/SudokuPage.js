@@ -43,11 +43,9 @@ const SudokuPage = () => {
 
         solveSudokuHelper(temp);
 
-        console.log(solvingHistory);
-
         for (const grid of solvingHistory) {
             setState(grid);
-            await new Promise((resolve) => setTimeout(resolve, 150));
+            await new Promise((resolve) => setTimeout(resolve, 200));
         }
     }
 
@@ -60,6 +58,10 @@ const SudokuPage = () => {
                 if (temp[i][j] === '.') {
 
                     for (let c = '1'; c <= '9'; c++) {
+
+                        temp[i][j] = c;
+                        solvingHistory.push(temp.map((arr) => arr.slice()));
+                        temp[i][j] = '.';
 
                         if (isValid(temp, i, j, c)) {
 

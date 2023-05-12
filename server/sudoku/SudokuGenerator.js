@@ -63,9 +63,9 @@ export default class SudokuGenerator {
     }
 
     removeNumbers(board) {
-        let cellsToRemove = 30; // easy difficulty
+        let cellsToRemove = 45; // medium difficulty
         if (Math.random() > 0.5) {
-            cellsToRemove = 40; // medium difficulty
+            cellsToRemove = 55; // hard difficulty
         }
         while (cellsToRemove > 0) {
             const i = Math.floor(Math.random() * 9);
