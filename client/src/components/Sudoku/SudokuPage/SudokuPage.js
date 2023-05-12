@@ -5,6 +5,7 @@ import Navbar from '../Navbar/Navbar.js';
 const SudokuPage = () => {
 
     const solvingHistory = [];
+    const pointers = [];
     const [state, setState] = useState([
         ['','','','','','','','',''],
         ['','','','','','','','',''],
@@ -30,22 +31,29 @@ const SudokuPage = () => {
                     grid[i][j] = '.';
 
                 else
-                    grid[i][j] = data[i][j].toString();
-                    
+                    grid[i][j] = data[i][j].toString();    
             }
         }
               
         setState(grid);
     }
 
-    const solveSudoku = async () => {        
+    const solveSudoku = async () => {  
+        let index = 0;      
         let temp = [...state];
 
         solveSudokuHelper(temp);
 
         for (const grid of solvingHistory) {
+            let box = document.getElementById('sudokuBox' + pointers[index][0] + "," + pointers[index][1]);
+
+            box.style.color = 'red';
             setState(grid);
+
             await new Promise((resolve) => setTimeout(resolve, 200));
+            
+            box.style.color = 'black';
+            index++;
         }
     }
 
@@ -61,12 +69,14 @@ const SudokuPage = () => {
 
                         temp[i][j] = c;
                         solvingHistory.push(temp.map((arr) => arr.slice()));
+                        pointers.push([i, j]);
                         temp[i][j] = '.';
 
                         if (isValid(temp, i, j, c)) {
 
                             temp[i][j] = c;
                             solvingHistory.push(temp.map((arr) => arr.slice()));
+                            pointers.push([i, j]);
 
                             if (solveSudokuHelper(temp))
                                 return true;
@@ -74,6 +84,7 @@ const SudokuPage = () => {
                             else {
                                 temp[i][j] = '.';
                                 solvingHistory.push(temp.map((arr) => arr.slice()));
+                                pointers.push([i, j]);
                             }
                         }
                     }
