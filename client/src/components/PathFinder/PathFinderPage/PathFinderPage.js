@@ -128,7 +128,7 @@ const PahtFinderPage = () => {
 
     return(
         <div>
-            <Navbar newMaze={newMaze} solveMaze={solveMaze}/>
+            <Navbar newMaze={() => {window.location.reload();}} solveMaze={solveMaze}/>
             <div style={{ margin: "40px 450px 50px 450px", display: "flex" }}>
                 <PathFinderBoard data={state}/>
             </div>

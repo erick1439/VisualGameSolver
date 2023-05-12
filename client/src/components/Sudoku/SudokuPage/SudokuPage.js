@@ -107,7 +107,7 @@ const SudokuPage = () => {
 
     return(
         <div>
-            <Navbar solveSudoku={solveSudoku} newSudokuTable={newSudokuTable} />
+            <Navbar solveSudoku={solveSudoku} newSudokuTable={() => {window.location.reload();}} />
             <div style={{ margin: "40px 450px 50px 450px", display: "flex" }}>
                 <SudokuBoard data={state}/>
             </div>

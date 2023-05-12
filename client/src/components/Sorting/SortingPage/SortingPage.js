@@ -8,7 +8,6 @@ const SortingPage = () => {
     const pointers = [];
     const [array, setArray] = useState([]);
 
-
     const newList = async () => {
         
         const temp = new Array(30);
